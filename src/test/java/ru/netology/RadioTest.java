@@ -102,4 +102,12 @@ class RadioTest {
       assertEquals(8, radio.getCurrentChannel());
    }
 
+   @Test
+   public void decreaseVolumeMinus() {
+      Radio radio = new Radio();
+      radio.setCurrentVolume(-35);
+      radio.decreaseVolume();
+      assertEquals(0, radio.getCurrentVolume() );
+   }
+
    }
