@@ -7,6 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
    @Test
+   public void increaseChannel() {
+      Radio radio = new Radio();
+      radio.setCurrentChannel(7);
+      radio.increaseChannel();
+      assertEquals(8, radio.getCurrentChannel());
+   }
+
+   @Test
+   void decreaseChannel() {
+      Radio radio = new Radio();
+      radio.setCurrentChannel(8);
+      radio.decreaseChannel();
+      assertEquals(7, radio.getCurrentChannel());
+   }
+
+   @Test
    void decreaseVolume() {
       Radio radio = new Radio();
       radio.setCurrentVolume(6);
@@ -25,9 +41,9 @@ class RadioTest {
    @Test
    public void increaseVolumeFromMaxVolume() {
       Radio radio = new Radio();
-      radio.setCurrentVolume(100);
+      radio.setCurrentVolume(10);
       radio.increaseVolume();
-      assertEquals(100, radio.getCurrentVolume());
+      assertEquals(10, radio.getCurrentVolume());
    }
 
    @Test
@@ -40,9 +56,10 @@ class RadioTest {
 
    @Test
    public void previousChannelFromMin() {
-      Radio radio = new Radio(0,70,80,10,20,10);
+      Radio radio = new Radio();
+      radio.setCurrentChannel(0);
       radio.decreaseChannel();
-      assertEquals(80, radio.getCurrentChannel());
+      assertEquals(9, radio.getCurrentChannel());
    }
 
    @Test
@@ -56,17 +73,17 @@ class RadioTest {
    @Test
    public void increaseVolumeFromValue() {
       Radio radio = new Radio();
-      radio.setCurrentVolume(250);
+      radio.setCurrentVolume(25);
       radio.increaseVolume();
-      assertEquals(100, radio.getCurrentVolume());
+      assertEquals(10, radio.getCurrentVolume());
    }
 
    @Test
    public void decreaseVolumeFromValue() {
       Radio radio = new Radio();
-      radio.setCurrentVolume(250);
+      radio.setCurrentVolume(25);
       radio.decreaseVolume();
-      assertEquals(99, radio.getCurrentVolume());
+      assertEquals(9, radio.getCurrentVolume());
    }
 
    @Test
@@ -98,19 +115,6 @@ class RadioTest {
       radio.setCurrentChannel(-40);
       radio.decreaseChannel();
       assertEquals(9, radio.getCurrentChannel());
-   }
-   @Test
-   void shouldSetNextChannel() {
-      Radio radio = new Radio(7,10);
-      radio.increaseChannel();
-      assertEquals(8,radio.getCurrentChannel());
-   }
-
-    @Test
-   void shouldPreviousChannel() {
-      Radio radio = new Radio(7,10);
-      radio.decreaseChannel();
-      assertEquals(6,radio.getCurrentChannel());
    }
 
    }
